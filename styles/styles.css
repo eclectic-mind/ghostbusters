@@ -35,6 +35,7 @@ h2 {
   height: 100%;
   align-items: center;
   flex-grow: 1;
+  justify-content: space-between;
 }
 .m-menu.visible {
   display: flex;
@@ -83,8 +84,21 @@ h2 {
   margin: 5px 0 0 0;
 }
 
-.menu-button {
+.menu-button,
+.menu-button-opened {
   margin: 8px 0 0 30px;
+}
+
+.mobile-buttons .menu-button-opened {
+  display: none;
+}
+
+.mobile-buttons .menu-button-opened.visible {
+  display: inline-block;
+}
+
+.mobile-buttons .menu-button.invisible {
+  display: none;
 }
 
 .sandwitch-top,
@@ -97,6 +111,34 @@ h2 {
   height: 1px;
   margin-top: 4px;
 }
+
+.menu-button-opened .sandwitch-top,
+.menu-button-opened .sandwitch-middle,
+.menu-button-opened .sandwitch-bottom {
+  position: absolute;
+}
+
+.menu-button-opened .sandwitch-middle {
+  transform: rotate(45deg);
+  top: 25px;
+  right: 14px;
+  width: 10px;
+}
+
+.menu-button-opened .sandwitch-top {
+  transform: rotate(-45deg);
+  top: 25px;
+  right: 22px;
+  width: 10px;
+}
+
+.menu-button-opened .sandwitch-bottom {
+  transform: rotate(90deg);
+  right: 14px;
+  top: 29px;
+  width: 18px;
+}
+
 .navigation {
   margin-right: 44px;
   margin-left: auto;
@@ -108,6 +150,18 @@ h2 {
   line-height: 21px;
   color: #363636;
   margin-right: 18px;
+}
+
+.navigation a:hover {
+  border-bottom: solid 1px #000000;
+}
+
+.line {
+  display: none;
+  flex-direction: column;
+  width: 104px;
+  height: 1px;
+  background-color: #ffffff;
 }
 
 .button-group {
@@ -123,9 +177,9 @@ h2 {
   border: none;
 }
 
-.sign-up {
+.button-group button.sign-up {
   color: #5671f6;
-  border-left: 1px solid #363636;
+  border-left: 1px solid #d4d4d4;
   background-color: #ffffff;
   padding-left: 34px;
   padding-right: 34px;
@@ -360,6 +414,7 @@ button.next {
   padding: 30px;
   border-radius: 5px;
   box-sizing: border-box;
+  min-height: 170px;
 }
 
 .item p {
@@ -385,8 +440,8 @@ button.next {
     height: 90px;
   }
 
-  .sign-up {
-    padding: 20px;
+  .button-group button.sign-up {
+    padding: 15px;
   }
   .login {
     padding: 0 40px;
@@ -452,15 +507,17 @@ button.next {
   .m-menu {
     position: fixed;
     left: 0;
-    top: 68px;
+    top: 66px;
     right: 0;
     bottom: 0;
-    height: calc(100% - 68px);
+    height: calc(100% - 66px);
     background-color: #5671f6;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    padding: 50px 0;
+    box-sizing: border-box;
   }
   .button-group {
     height: auto;
@@ -469,7 +526,7 @@ button.next {
   }
   .button-group button {
     height: auto;
-    padding: 0;
+    padding: 15px;
   }
   .search-input {
     margin: 0;
@@ -479,6 +536,20 @@ button.next {
     border: none;
     background-image: none;
   }
+
+  .navigation a:hover {
+    border-bottom: none;
+    color: #000000;
+  }
+
+  .login:hover {
+    color: #000000;
+  }
+
+  .button-group button.sign-up:hover {
+    color: #000000;
+  }
+
   .navigation {
     display: flex;
     flex-direction: column;
@@ -491,14 +562,20 @@ button.next {
     margin: 0 0 18px 0;
     font-size: 18px;
   }
+
   .navigation a:last-child {
     margin-bottom: 0;
   }
-  .sign-up {
+
+  .line {
+    display: flex;
+  }
+
+  .button-group button.sign-up {
     background-color: transparent;
     color: #ffffff;
     border: none;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
   .container {
     max-width: 560px;
@@ -529,6 +606,7 @@ button.next {
     display: block;
     margin-left: auto;
   }
+
   .header {
     height: 65px;
     padding: 0 28px;

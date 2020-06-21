@@ -3,12 +3,16 @@ $(document).ready(function () {
   const mobileSearchButton = $('.search-button');
   const mobileMenuButton = $('.menu-button');
   const mobileMenu = $('.m-menu');
+  const sandwitchOpened = $('.menu-button-opened');
   const tab = $('.tab');
 
   const showMobileMenu = () => {
     mobileMenu.toggleClass('visible');
+    mobileMenuButton.toggleClass('invisible');
+    sandwitchOpened.toggleClass('visible');
     $('body').toggleClass('no-scroll');
   };
+
   const changeTab = function () {
     tab.removeClass('active');
     $(this).toggleClass('active');
@@ -20,6 +24,7 @@ $(document).ready(function () {
 
   mobileSearchButton.on('click', showMobileMenu);
   mobileMenuButton.on('click', showMobileMenu);
+  sandwitchOpened.on('click', showMobileMenu);
   tab.on('click', changeTab);
 
   const mySwiper = new Swiper('.swiper-container', {
